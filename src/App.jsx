@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Home from './components/Home';
 import ContextMenu from './components/ContextMenu';
@@ -9,6 +9,19 @@ import { getProduct } from './data/products';
 export default function App() {
   const [menu, setMenu] = useState(null); // { productId, x, y }
   const [view, setView] = useState(null); // { productId, mode: 'info' | 'tips' }
+
+  // Permite abrir direto num produto/modo via URL, ex:
+  // ?product=clt&mode=info  ou  ?product=refin&mode=tips
+  // Usado para embutir este site (via iframe) em outras telas, como o
+  // dashboard das vendedoras, sem precisar clicar de novo na Home.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('product');
+    const mode = params.get('mode');
+    if (productId && (mode === 'info' || mode === 'tips') && getProduct(productId)) {
+      setView({ productId, mode });
+    }
+  }, []);
 
   function handleProductClick(productId, e) {
     setMenu({ productId, x: e.clientX, y: e.clientY });
