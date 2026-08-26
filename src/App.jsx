@@ -30,6 +30,11 @@ export default function App() {
   function handleSelect(mode) {
     setView({ productId: menu.productId, mode });
     setMenu(null);
+    if (mode === 'info') {
+      try {
+        window.parent?.postMessage({ type: 'hotline-playbook-info-aberta', productId: menu.productId }, '*');
+      } catch { /* ignora se nao estiver num iframe */ }
+    }
   }
 
   const activeProduct = view ? getProduct(view.productId) : null;
