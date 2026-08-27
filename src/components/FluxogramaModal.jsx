@@ -16,7 +16,7 @@ export default function FluxogramaModal({ product, onClose }) {
       onClick={onClose}
     >
       <motion.div
-        className="playbook-sheet"
+        className="fluxograma-sheet"
         style={{ '--accent': product.color, maxWidth: 720, overflowY: 'auto' }}
         initial={{ opacity: 0, y: 30, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
