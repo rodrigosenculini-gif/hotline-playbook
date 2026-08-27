@@ -173,3 +173,32 @@ section{scroll-margin-top:20px; margin-bottom:46px;}
 .tip-popup h3{font-size:18px; margin-bottom:10px;}
 .tip-popup p{font-size:14px; margin-bottom:20px;}
 .block-next{background:var(--ember); color:#fff; font-weight:700; padding:12px 24px; border-radius:12px; font-size:14px;}
+
+/* --- Fluxograma navegável (feito do zero, sem imagem) --- */
+.fluxo-node{
+  background:#171310; border:1px solid #2a231c; color:#f4ede0;
+  font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:600;
+  padding:10px 18px; border-radius:10px; text-align:center; cursor:default;
+}
+.fluxo-node-start{ border-color: var(--accent); color: var(--accent); }
+.fluxo-linha{ width:2px; height:20px; background:#2a231c; }
+.fluxo-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:14px 20px; width:100%; margin-top:6px;
+}
+@media (max-width:600px){ .fluxo-grid{ grid-template-columns:1fr; } }
+.fluxo-branch{ display:flex; flex-direction:column; align-items:stretch; }
+.fluxo-conector-topo{ width:2px; height:14px; background:#2a231c; margin:0 auto; }
+.fluxo-node-cenario{
+  display:flex; align-items:center; gap:10px; cursor:pointer; width:100%;
+  transition:border-color .15s, background .15s;
+}
+.fluxo-node-cenario:hover{ border-color: var(--accent); }
+.fluxo-node-cenario.aberto{ background:#201a14; border-color: var(--accent); }
+.fluxo-node-num{
+  background: var(--accent); color:#171310; width:20px; height:20px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; font-size:11px; flex-shrink:0;
+}
+.fluxo-detalhe{ overflow:hidden; }
+.fluxo-detalhe p{
+  font-size:12.5px; color:#c9bfae; line-height:1.6; padding:10px 4px 4px;
+}

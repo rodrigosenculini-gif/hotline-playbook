@@ -4,6 +4,7 @@ import Home from './components/Home';
 import ContextMenu from './components/ContextMenu';
 import PlaybookView from './components/PlaybookView';
 import TipsModal from './components/TipsModal';
+import FluxogramaModal from './components/FluxogramaModal';
 import { getProduct } from './data/products';
 
 export default function App() {
@@ -18,7 +19,7 @@ export default function App() {
     const params = new URLSearchParams(window.location.search);
     const productId = params.get('product');
     const mode = params.get('mode');
-    if (productId && (mode === 'info' || mode === 'tips') && getProduct(productId)) {
+    if (productId && (mode === 'info' || mode === 'tips' || mode === 'fluxo') && getProduct(productId)) {
       setView({ productId, mode });
     }
   }, []);
@@ -51,6 +52,7 @@ export default function App() {
       <AnimatePresence>
         {view?.mode === 'info' && <PlaybookView product={activeProduct} onClose={() => setView(null)} />}
         {view?.mode === 'tips' && <TipsModal product={activeProduct} onClose={() => setView(null)} />}
+        {view?.mode === 'fluxo' && <FluxogramaModal product={activeProduct} onClose={() => setView(null)} />}
       </AnimatePresence>
     </div>
   );

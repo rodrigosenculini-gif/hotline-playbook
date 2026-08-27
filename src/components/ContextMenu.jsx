@@ -38,6 +38,12 @@ export default function ContextMenu({ x, y, product, onSelect, onClose }) {
         💡 Dicas
         <span>Dicas rápidas de atendimento</span>
       </button>
+      {product.fluxogramaInterativo && (
+        <button className="context-menu-item" onClick={() => onSelect('fluxo')}>
+          🗺️ Fluxograma
+          <span>Navegue pelo fluxo de atendimento</span>
+        </button>
+      )}
     </motion.div>
   );
 }
