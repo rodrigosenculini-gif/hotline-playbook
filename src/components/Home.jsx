@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { PRODUCTS } from '../data/products';
 
-export default function Home({ onProductClick }) {
+export default function Home({ onProductClick, onFluxogramaClick }) {
+  const produtoFluxo = PRODUCTS.find((p) => p.fluxogramaInterativo);
   return (
     <div className="home">
       <header className="home-header">
@@ -29,6 +30,18 @@ export default function Home({ onProductClick }) {
           </motion.button>
         ))}
       </div>
+
+      {produtoFluxo && (
+        <motion.button
+          className="fluxograma-link-btn"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          onClick={onFluxogramaClick}
+        >
+          🗺️ Ver fluxograma de atendimento
+        </motion.button>
+      )}
     </div>
   );
 }

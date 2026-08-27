@@ -202,3 +202,11 @@ section{scroll-margin-top:20px; margin-bottom:46px;}
 .fluxo-detalhe p{
   font-size:12.5px; color:#c9bfae; line-height:1.6; padding:10px 4px 4px;
 }
+
+.fluxograma-link-btn{
+  display:block; margin:32px auto 0; max-width:280px; width:100%;
+  background:#171310; border:1px solid #2a231c; color:#f4ede0;
+  font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:600;
+  padding:12px 20px; border-radius:10px; cursor:pointer; text-align:center;
+}
+.fluxograma-link-btn:hover{ border-color:#ff5a1f; }

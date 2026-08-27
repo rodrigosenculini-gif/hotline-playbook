@@ -5,7 +5,7 @@ import ContextMenu from './components/ContextMenu';
 import PlaybookView from './components/PlaybookView';
 import TipsModal from './components/TipsModal';
 import FluxogramaModal from './components/FluxogramaModal';
-import { getProduct } from './data/products';
+import { getProduct, PRODUCTS } from './data/products';
 
 export default function App() {
   const [menu, setMenu] = useState(null); // { productId, x, y }
@@ -38,12 +38,17 @@ export default function App() {
     }
   }
 
+  function handleFluxogramaClick() {
+    const produtoFluxo = PRODUCTS.find((p) => p.fluxogramaInterativo);
+    if (produtoFluxo) setView({ productId: produtoFluxo.id, mode: 'fluxo' });
+  }
+
   const activeProduct = view ? getProduct(view.productId) : null;
   const menuProduct = menu ? getProduct(menu.productId) : null;
 
   return (
     <div className="app-root">
-      <Home onProductClick={handleProductClick} />
+      <Home onProductClick={handleProductClick} onFluxogramaClick={handleFluxogramaClick} />
 
       <AnimatePresence>
         {menu && <ContextMenu x={menu.x} y={menu.y} product={menuProduct} onSelect={handleSelect} onClose={() => setMenu(null)} />}
