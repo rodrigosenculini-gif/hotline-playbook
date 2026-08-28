@@ -24,13 +24,14 @@ export const PRODUCTS = [
         { tone: '', title: 'Juros de até 4,98% ao mês', body: 'Taxa competitiva — vale reforçar isso quando o cliente comparar com outras opções.' },
         { tone: '', title: 'Comece pelo benefício', body: 'Fale primeiro do valor/condição — nunca abra a conversa falando de burocracia ou prazo.' },
       ],
+      duvidaFrequente: 'O desconto em folha é realizado mês a mês, porém o início dele é oficialmente a partir de 60 dias da contratação do empréstimo. Mas isso pode mudar de acordo com a empresa em que o cliente trabalha — grande parte das empresas começa a repassar os descontos logo no próximo holerite. Há dois momentos: entre o dia 1 e o dia 22, o desconto pode acontecer já no próximo mês; depois do dia 23 (virada de folha pelo RH), o desconto só vai acontecer a partir do mês seguinte ao próximo.',
       highlight: '"Consegui uma condição para você e vou te mostrar como aproveitar."',
       flow: [
         { title: '1. Identifique', sub: 'Origem do lead' },
-        { title: '2. Pergunte', sub: 'Já tem crédito ativo?' },
+        { title: '2. Pergunte', sub: 'Resolva dúvidas do cliente' },
         { title: '3. Apresente', sub: 'Valor disponível' },
         { title: '4. Negocie', sub: 'Se houver objeção' },
-        { title: '5. Finalize', sub: 'Feche e leve ao WhatsApp' },
+        { title: '5. Finalize', sub: 'Agradeça, oferte outros produtos, peça indicação.' },
       ],
       cenarios: [
         { title: 'Dúvida sobre o produto', body: 'Explique sobre o produto: um crédito novo disponível com desconto direto em folha de pagamento. Utilizando até 35% do salário do cliente, com taxas baixas e várias opções de bancos para aprovação. A aprovação depende do motor de crédito do banco parceiro.' },
@@ -65,6 +66,21 @@ export const PRODUCTS = [
         'fiz negociação',
         'fiz follow ups',
       ],
+      leilao: {
+        intro: 'O Leilão do Crédito CLT é uma oportunidade de captação de lead através de ferramentas disponíveis. A Carteira de Trabalho Digital dá a possibilidade do cliente fazer simulações fictícias — e quando faz isso, seus dados são enviados para nossa plataforma e conseguimos entrar em contato com ele para fazer a primeira abordagem.',
+        obstaculos: [
+          'Nem todos vão ser aprovados, depende dos bancos.',
+          'São clientes novos — a maioria nunca entrou em contato com a Hotline, então pode chegar estressado no atendimento. Tudo precisa ser tratado com cautela.',
+          'Algumas propostas nos bancos parceiros podem travar num status antes do pagamento: só é possível pagar a nossa quando as simulações que ele fez direto pela carteira de trabalho cessarem. Normalmente dura 24 horas, dependendo de quando ele chegou até a nossa plataforma.',
+          'Dados do cliente podem estar incorretos.',
+        ],
+        saidas: [
+          'Sempre há a possibilidade do cross sell. As regras e motores de crédito do banco (ou do próprio empréstimo) podem mudar — fidelize o cliente pra ter alternativas de tentativa, até mesmo num próximo momento, como no mês seguinte.',
+          'Trate o cliente com cordialidade. Se estiver estressado, acalme-o — o que ele mais espera é resolução, principalmente vinda de você, vendedor.',
+          'Sempre informe ao cliente que ele não deve ter simulações ativas na carteira de trabalho digital — se tiver, isso pode interferir no pagamento.',
+          'Caso identifique erros nos dados, confirme com o cliente. Antes de mais nada, entenda se está falando com a pessoa correta.',
+        ],
+      },
     },
     tips: [
       { title: 'Abra pelo benefício', body: 'Comece sempre pelo valor disponível, nunca pela burocracia do desconto em folha.' },

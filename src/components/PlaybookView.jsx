@@ -1,14 +1,18 @@
 import { motion } from 'framer-motion';
 
-const SECTIONS = [
-  { id: 'essencial', label: 'O essencial' },
-  { id: 'fluxo', label: 'Fluxo de abordagem' },
-  { id: 'cenarios', label: 'Cenários' },
-  { id: 'negociacao', label: 'Negociação' },
-  { id: 'objecoes', label: 'Objeções' },
-  { id: 'regras', label: 'Regras de ouro' },
-  { id: 'checklist', label: 'Checklist' },
-];
+function getSections(pb) {
+  const base = [
+    { id: 'essencial', label: 'O essencial' },
+    { id: 'fluxo', label: 'Fluxo de abordagem' },
+    { id: 'cenarios', label: 'Cenários' },
+    { id: 'negociacao', label: 'Negociação' },
+    { id: 'objecoes', label: 'Objeções' },
+    { id: 'regras', label: 'Regras de ouro' },
+  ];
+  if (pb.leilao) base.push({ id: 'leilao', label: 'Leilão' });
+  base.push({ id: 'checklist', label: 'Checklist' });
+  return base;
+}
 
 export default function PlaybookView({ product, onClose }) {
   const pb = product.playbook;
@@ -39,7 +43,7 @@ export default function PlaybookView({ product, onClose }) {
             <small>Playbook comercial</small>
             <strong>{product.icon} {product.name}</strong>
           </div>
-          {SECTIONS.map((s) => (
+          {getSections(pb).map((s) => (
             <a key={s.id} onClick={() => scrollTo(s.id)}>{s.label}</a>
           ))}
         </nav>
@@ -73,6 +77,12 @@ export default function PlaybookView({ product, onClose }) {
               <div className="highlight-pb">
                 <strong>Frase que você precisa dominar:</strong>
                 <p>{pb.highlight}</p>
+              </div>
+            )}
+            {pb.duvidaFrequente && (
+              <div className="card-pb" style={{ marginTop: 16 }}>
+                <h3>Dúvida frequente</h3>
+                <p>{pb.duvidaFrequente}</p>
               </div>
             )}
           </section>
@@ -146,8 +156,31 @@ export default function PlaybookView({ product, onClose }) {
             </div>
           </section>
 
+          {pb.leilao && (
+            <section id="leilao">
+              <div className="section-title-pb"><span className="section-number-pb">07</span><h2>Leilão</h2></div>
+              <p className="section-subtitle-pb">{pb.leilao.intro}</p>
+              <h3 style={{ marginTop: 12 }}>Possíveis obstáculos</h3>
+              <div className="grid-pb">
+                {pb.leilao.obstaculos.map((o, i) => (
+                  <div key={i} className="card-pb">
+                    <p style={{ margin: 0 }}>{o}</p>
+                  </div>
+                ))}
+              </div>
+              <h3 style={{ marginTop: 16 }}>Possíveis saídas</h3>
+              <div className="grid-pb">
+                {pb.leilao.saidas.map((s, i) => (
+                  <div key={i} className="card-pb">
+                    <p style={{ margin: 0 }}>{s}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           <section id="checklist">
-            <div className="section-title-pb"><span className="section-number-pb">07</span><h2>Checklist</h2></div>
+            <div className="section-title-pb"><span className="section-number-pb">{pb.leilao ? '08' : '07'}</span><h2>Checklist</h2></div>
             <div className="checklist-pb">
               {pb.checklist.map((c, i) => (
                 <div key={i} className="check-pb">{c}</div>
